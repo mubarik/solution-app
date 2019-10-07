@@ -1611,3 +1611,1073 @@ Processing by KindsController#index as HTML
 Completed 200 OK in 88ms (Views: 86.1ms | ActiveRecord: 0.2ms)
 
 
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:05:45 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 809ms (Views: 767.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:05:50 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (1416.3ms)
+  Rendered tasks/new.html.erb within layouts/application (1418.5ms)
+Completed 500 Internal Server Error in 1465ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `task' for #<#<Class:0x00007f4ee8899638>:0x00007f4eec0c5390>
+Did you mean?  @task):
+    1: <%= form_for task, html: { class: "form" } do |form| %>
+    2:   <% if task.errors.any? %>
+    3:     <p><%= pluralize(task.errors.count, "error") %> prohibited this kind from being saved:</p>
+    4: 
+  
+app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__1917164207504257617_69988472249380'
+app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb___3391520077224917373_69988472204880'
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:07:52 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (91.2ms)
+  Rendered tasks/new.html.erb within layouts/application (95.7ms)
+Completed 200 OK in 230ms (Views: 187.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:08:03 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V6FMD1bTSc9DpzEKashIwzhB2At0S/SulMb9qnLqoYuAtTzbN6ytSp1dw6zvpBV0L5fcrGH8uKjhdPyaU2tXiA==", "task"=>{"name"=>"heloo", "description"=>"asdasdasda"}, "commit"=>"Create Task"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (13.0ms)
+  Rendered tasks/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 230ms (Views: 137.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:17:52 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (6.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 313ms (Views: 231.5ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:17:55 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (12.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (506.9ms)
+  Rendered tasks/new.html.erb within layouts/application (511.5ms)
+Completed 200 OK in 598ms (Views: 579.3ms | ActiveRecord: 13.6ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:18:10 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H2G6GMRmZy8MAFeqouVDg4xLgOzNq+a+FacHpJxqAzQUQrGtg7Qu+HuGWY6WQvMcXWucosYbFADUaeyMOgaD+g==", "task"=>{"name"=>"my task", "kind_id"=>"2", "description"=>"aasdasdasdasdasda"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.4ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (16.8ms)
+  Rendered tasks/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 117ms (Views: 103.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:18:34 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w82CI2vtt0g852RO1Xu439MG4yhRDwnrDU5ZATpRMHgU2fL3CpJTzeIdluhQF+VoxNDnj0S4Re14/FgxG9DGew==", "task"=>{"name"=>"my task", "kind_id"=>"8", "description"=>"aasdasdasdasdasda"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.2ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (13.3ms)
+  Rendered tasks/new.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 132ms (Views: 95.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:20:34 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 94ms (Views: 85.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:20:37 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (41.6ms)
+  Rendered tasks/new.html.erb within layouts/application (48.3ms)
+Completed 200 OK in 170ms (Views: 128.4ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:20:42 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A42iyJu1I0pCm8rCV+/hzTg6igkW/v1zK1j/cJH/GEIIrql93GdqnTUdxOZjSFFS6RqWRx1OD83qlhRYN5OYjA==", "task"=>{"name"=>"dsasdasd", "kind_id"=>"1", "description"=>"asdadas"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (13.4ms)
+  Rendered tasks/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 132ms (Views: 89.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:23:57 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 271ms (Views: 232.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:24:00 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.4ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (51.2ms)
+  Rendered tasks/new.html.erb within layouts/application (59.7ms)
+Completed 200 OK in 229ms (Views: 182.4ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:24:07 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7KrxVN+tltk4Qy529uqM7LYtsf0r7bvhMcS1lTrp/ebnifrhmH/fDk/FIFLCTTxzZw2tsyBdSV/wCl69nIV9KA==", "task"=>{"name"=>"sdsadas", "kind_id"=>"2", "description"=>"sdasdasd"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[36mTask Create (198.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "sdsadas"], ["description", "sdasdasd"], ["created_at", "2019-10-07 01:24:07.263162"], ["updated_at", "2019-10-07 01:24:07.263162"]]
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 198.8ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: tasks.kind_id: INSERT INTO "tasks" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)):
+  
+app/controllers/tasks_controller.rb:21:in `block in create'
+app/controllers/tasks_controller.rb:20:in `create'
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:27:47 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (17.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 197ms (Views: 147.5ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:27:50 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (19.8ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (85.4ms)
+  Rendered tasks/new.html.erb within layouts/application (137.5ms)
+Completed 200 OK in 249ms (Views: 191.0ms | ActiveRecord: 21.3ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:27:58 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W8+vjyKbA60x6NwWlf5UZp13Cs2H/5ap9M8woiE53gdQ7KQ6ZUlKekZu0jKhWeT5TFcWg4xPZBc1AduKh1VeyQ==", "task"=>{"name"=>"sdasdasd", "kind_id"=>"10", "description"=>"asdadadas"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[36mTask Create (20.2ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "sdasdasd"], ["description", "asdadadas"], ["created_at", "2019-10-07 01:27:58.218505"], ["updated_at", "2019-10-07 01:27:58.218505"]]
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 20.4ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: tasks.kind_id: INSERT INTO "tasks" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)):
+  
+app/controllers/tasks_controller.rb:21:in `block in create'
+app/controllers/tasks_controller.rb:20:in `create'
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:37:13 -0400
+  [1m[35m (13.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 938ms (Views: 899.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:37:17 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.4ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (251.0ms)
+  Rendered tasks/new.html.erb within layouts/application (254.6ms)
+Completed 200 OK in 384ms (Views: 345.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:37:41 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TZdgrmodXJHPMnmJHQBxvA8w1QTarBZWYi021Efpd2JGtGsbLc8VRri0d60pp8Ej3hDJStEc5Oij49384YX3rA==", "task"=>{"name"=>"xcxzczxczxczxc", "kind_id"=>"6", "description"=>"czxczxz", "delivery_at"=>"2019-10-07", "category"=>"5"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[36mTask Create (1.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "delivery_at", "description", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "xcxzczxczxczxc"], ["delivery_at", "2019-10-07 00:00:00"], ["description", "czxczxz"], ["category", 5], ["created_at", "2019-10-07 01:37:41.482811"], ["updated_at", "2019-10-07 01:37:41.482811"]]
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.7ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: tasks.kind_id: INSERT INTO "tasks" ("name", "delivery_at", "description", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)):
+  
+app/controllers/tasks_controller.rb:21:in `block in create'
+app/controllers/tasks_controller.rb:20:in `create'
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from require at bin/rails:4)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (22.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from require at bin/rails:4)
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from require at bin/rails:4)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (70.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKinds (20171115000546)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "kinds" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "size" integer DEFAULT 0 NOT NULL, "active" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20171115000546_create_kinds.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_kinds_on_name" ON "kinds" ("name")[0m
+  ↳ db/migrate/20171115000546_create_kinds.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (9.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171115000546"]]
+  ↳ bin/rails:4
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateTasks (20171115161308)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "kind_id" integer, "delivery_at" datetime, "description" text, "category" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20171115161308_create_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_kind_id" ON "tasks" ("kind_id")[0m
+  ↳ db/migrate/20171115161308_create_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171115161308"]]
+  ↳ bin/rails:4
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (4.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-07 01:45:49.810236"], ["updated_at", "2019-10-07 01:45:49.810236"]]
+  ↳ bin/rails:4
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from require at bin/rails:4)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (3.9ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Auto"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Manual"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Process"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Semi-auto"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:46:58 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 745ms (Views: 706.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/kinds" for 127.0.0.1 at 2019-10-06 21:47:02 -0400
+Processing by KindsController#index as HTML
+  Rendering kinds/index.html.erb within layouts/application
+  [1m[36mKind Load (0.4ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/kinds/index.html.erb:14
+  Rendered kinds/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 212ms (Views: 185.0ms | ActiveRecord: 0.9ms)
+
+
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from require at bin/rails:4)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from load at /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23)
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from load at /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (47.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+Migrating to CreateKinds (20171115000546)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "kinds" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "size" integer DEFAULT 0 NOT NULL, "active" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20171115000546_create_kinds.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_kinds_on_name" ON "kinds" ("name")[0m
+  ↳ db/migrate/20171115000546_create_kinds.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (5.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171115000546"]]
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+Migrating to CreateTasks (20171115161308)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "kind_id" integer, "delivery_at" datetime, "description" text, "category" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20171115161308_create_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_kind_id" ON "tasks" ("kind_id")[0m
+  ↳ db/migrate/20171115161308_create_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171115161308"]]
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (7.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-07 01:49:22.513801"], ["updated_at", "2019-10-07 01:49:22.513801"]]
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from load at /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Auto"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Manual"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Process"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mKind Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Semi-auto"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:15
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:50:20 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/osboxes/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 770ms (Views: 728.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/kinds" for 127.0.0.1 at 2019-10-06 21:50:23 -0400
+Processing by KindsController#index as HTML
+  Rendering kinds/index.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/kinds/index.html.erb:14
+  Rendered kinds/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 192ms (Views: 182.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/kinds/new" for 127.0.0.1 at 2019-10-06 21:50:27 -0400
+Processing by KindsController#new as HTML
+  Rendering kinds/new.html.erb within layouts/application
+  Rendered kinds/_form.html.erb (53.8ms)
+  Rendered kinds/new.html.erb within layouts/application (67.8ms)
+Completed 200 OK in 191ms (Views: 146.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/kinds" for 127.0.0.1 at 2019-10-06 21:50:37 -0400
+Processing by KindsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bUth7EBjPfrFCetHSldUsnD7t0JXOBz5L/OD0ECKccMKLktRfZ/29/aJ1OJv8mq2AdAWg7JGrwK+YZ8Z21MN8w==", "kind"=>{"name"=>"Auto", "size"=>"25", "active"=>"1"}, "commit"=>"Create Kind"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Auto"], ["LIMIT", 1]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  Rendering kinds/new.html.erb within layouts/application
+  Rendered kinds/_form.html.erb (10.2ms)
+  Rendered kinds/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 187ms (Views: 163.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/kinds" for 127.0.0.1 at 2019-10-06 21:50:46 -0400
+Processing by KindsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q6vsPdY3pcNRAZIdy6zhdycs2uj4fw0oifFMNyynLXCUv5zpt0hBRo/7YLtOwLzAMPreT+3IQS78Q00HDSbbcw==", "kind"=>{"name"=>"Autoo", "size"=>"25", "active"=>"1"}, "commit"=>"Create Kind"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "Autoo"], ["LIMIT", 1]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Create (6.0ms)[0m  [1m[32mINSERT INTO "kinds" ("name", "size", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Autoo"], ["size", 25], ["created_at", "2019-10-07 01:50:46.713167"], ["updated_at", "2019-10-07 01:50:46.713167"]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+Redirected to http://localhost:3000/kinds
+Completed 302 Found in 38ms (ActiveRecord: 12.2ms)
+
+
+Started GET "/kinds" for 127.0.0.1 at 2019-10-06 21:50:46 -0400
+Processing by KindsController#index as HTML
+  Rendering kinds/index.html.erb within layouts/application
+  [1m[36mKind Load (0.2ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/kinds/index.html.erb:14
+  Rendered kinds/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 171ms (Views: 165.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kinds/new" for 127.0.0.1 at 2019-10-06 21:50:51 -0400
+Processing by KindsController#new as HTML
+  Rendering kinds/new.html.erb within layouts/application
+  Rendered kinds/_form.html.erb (11.5ms)
+  Rendered kinds/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 172ms (Views: 168.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kinds" for 127.0.0.1 at 2019-10-06 21:51:03 -0400
+Processing by KindsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uU4uIvu6ekV3+IPqkzv/HTYi5rAnLlsM+z6N/5PQhlLeKwSfxkaxSER4vE+2nsEZRwlHccJQ6PdqrJE2CAn6Yg==", "kind"=>{"name"=>"manual", "size"=>"21", "active"=>"1"}, "commit"=>"Create Kind"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "manual"], ["LIMIT", 1]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Create (5.9ms)[0m  [1m[32mINSERT INTO "kinds" ("name", "size", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "manual"], ["size", 21], ["created_at", "2019-10-07 01:51:03.718643"], ["updated_at", "2019-10-07 01:51:03.718643"]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+Redirected to http://localhost:3000/kinds
+Completed 302 Found in 27ms (ActiveRecord: 12.6ms)
+
+
+Started GET "/kinds" for 127.0.0.1 at 2019-10-06 21:51:03 -0400
+Processing by KindsController#index as HTML
+  Rendering kinds/index.html.erb within layouts/application
+  [1m[36mKind Load (0.2ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/kinds/index.html.erb:14
+  Rendered kinds/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 97ms (Views: 94.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kinds/new" for 127.0.0.1 at 2019-10-06 21:51:07 -0400
+Processing by KindsController#new as HTML
+  Rendering kinds/new.html.erb within layouts/application
+  Rendered kinds/_form.html.erb (16.0ms)
+  Rendered kinds/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 107ms (Views: 104.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kinds" for 127.0.0.1 at 2019-10-06 21:51:19 -0400
+Processing by KindsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y6OzDVFKJCnr3n93s0jRooGwIgZ9SeQwoNTX6LJS9N8ExpmwbLbvJNheQNKW7e+m8JuDx5g3V8sxRsshKYuI7w==", "kind"=>{"name"=>"acidacid", "size"=>"0", "active"=>"1"}, "commit"=>"Create Kind"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "acidacid"], ["LIMIT", 1]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  Rendering kinds/new.html.erb within layouts/application
+  Rendered kinds/_form.html.erb (10.2ms)
+  Rendered kinds/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 107ms (Views: 93.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/kinds" for 127.0.0.1 at 2019-10-06 21:51:48 -0400
+Processing by KindsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VDFcI3td/cXQpR13lHSTTPCWpIfXVbIGLyBbD2mRy/KDJSz3GiIZQA5f79ERGM7750CgIMLi/gBaklo/SBA98Q==", "kind"=>{"name"=>"acidacid", "size"=>"36", "active"=>"1"}, "commit"=>"Create Kind"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "kinds" WHERE "kinds"."name" = ? LIMIT ?[0m  [["name", "acidacid"], ["LIMIT", 1]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[36mKind Create (4.4ms)[0m  [1m[32mINSERT INTO "kinds" ("name", "size", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "acidacid"], ["size", 36], ["created_at", "2019-10-07 01:51:48.865591"], ["updated_at", "2019-10-07 01:51:48.865591"]]
+  ↳ app/controllers/kinds_controller.rb:20
+  [1m[35m (44.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kinds_controller.rb:20
+Redirected to http://localhost:3000/kinds
+Completed 302 Found in 68ms (ActiveRecord: 49.3ms)
+
+
+Started GET "/kinds" for 127.0.0.1 at 2019-10-06 21:51:48 -0400
+Processing by KindsController#index as HTML
+  Rendering kinds/index.html.erb within layouts/application
+  [1m[36mKind Load (0.2ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/kinds/index.html.erb:14
+  Rendered kinds/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 131ms (Views: 128.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:51:54 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 85ms (Views: 78.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2019-10-06 21:51:56 -0400
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mKind Load (0.2ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (26.5ms)
+  Rendered tasks/new.html.erb within layouts/application (31.4ms)
+Completed 200 OK in 145ms (Views: 103.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2019-10-06 21:52:12 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/Vx1x9tkk36+35leOmpUtvXTZcd90ZJX5LAn2Bw5Rgj2f35ynLbaqclZl3oOzeQpJPN5iXZhYOklfszwulXGxg==", "task"=>{"name"=>"my task", "kind_id"=>"3", "description"=>"sdadasd", "delivery_at"=>"2019-10-07", "category"=>"2"}, "commit"=>"Create Task"}
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[36mTask Create (2.8ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "delivery_at", "description", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "my task"], ["delivery_at", "2019-10-07 00:00:00"], ["description", "sdadasd"], ["category", 2], ["created_at", "2019-10-07 01:52:12.853022"], ["updated_at", "2019-10-07 01:52:12.853022"]]
+  ↳ app/controllers/tasks_controller.rb:21
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:21
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 30ms (ActiveRecord: 12.9ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2019-10-06 21:52:12 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 101ms (Views: 96.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2019-10-06 21:52:20 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 114ms (Views: 108.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:52:24 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 83ms (Views: 79.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:54:09 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 84ms (Views: 81.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:55:45 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (50.5ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    17:     <% @tasks.each do |task| %>
+    18:       <tr>
+    19:         <td><%= task.name %></td>
+    20:         <td><%= task.kind.name %></td>
+    21:         <td></td>
+    22:         <td></td>
+    23:       </tr>
+  
+app/views/tasks/index.html.erb:20:in `block in _app_views_tasks_index_html_erb___1401993348712119073_69945200216420'
+app/views/tasks/index.html.erb:17:in `_app_views_tasks_index_html_erb___1401993348712119073_69945200216420'
+Started GET "/" for 127.0.0.1 at 2019-10-06 21:57:23 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 88ms (Views: 82.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 22:00:11 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 115ms (Views: 109.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 22:03:29 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 111ms (Views: 76.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks/1/edit" for 127.0.0.1 at 2019-10-06 22:03:32 -0400
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (1137.9ms)
+  Rendered tasks/edit.html.erb within layouts/application (1140.7ms)
+Completed 500 Internal Server Error in 1175ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `task' for #<#<Class:0x00007f3ac48925f0>:0x00007f3ac5f750d8>
+Did you mean?  @task):
+    1: <%= form_for task, html: { class: "form" } do |form| %>
+    2:   <% if task.errors.any? %>
+    3:     <p><%= pluralize(task.errors.count, "error") %> prohibited this kind from being saved:</p>
+    4: 
+  
+app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2044937082905194015_69945203052940'
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb___162725194037096243_69945203077220'
+Started GET "/tasks/1/edit" for 127.0.0.1 at 2019-10-06 22:04:00 -0400
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+  Rendering tasks/edit.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (24.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 124ms (Views: 112.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/tasks/1" for 127.0.0.1 at 2019-10-06 22:04:04 -0400
+Processing by TasksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"USYLli9O+ipF9t7DbFAfS+smIMD1ekGFYOSig5ZzblmGMntCTjEer5sMLGXpPEL8/PAkZ+DNDYMVVqOzt/KYWg==", "task"=>{"name"=>"my task2", "kind_id"=>"1", "description"=>"sdadasd", "delivery_at"=>"2019-10-07", "category"=>"2"}, "commit"=>"Update Task", "id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+Completed 500 Internal Server Error in 784ms (ActiveRecord: 0.2ms)
+
+
+  
+NameError (undefined local variable or method `kind_params' for #<TasksController:0x00007f3ac5a466c0>
+Did you mean?  kind_path):
+  
+app/controllers/tasks_controller.rb:33:in `block in update'
+app/controllers/tasks_controller.rb:32:in `update'
+Started GET "/tasks/1" for 127.0.0.1 at 2019-10-06 22:04:56 -0400
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+Completed 406 Not Acceptable in 94ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionController::UnknownFormat (TasksController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-06 22:05:02 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 121ms (Views: 116.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/1/edit" for 127.0.0.1 at 2019-10-06 22:05:04 -0400
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+  Rendering tasks/edit.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (68.7ms)
+  Rendered tasks/edit.html.erb within layouts/application (76.6ms)
+Completed 200 OK in 175ms (Views: 167.5ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/tasks/1" for 127.0.0.1 at 2019-10-06 22:05:07 -0400
+Processing by TasksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Yd+uErovr2LHzkjnj4H5VGHAqxP/dnTm7YG2DtfgrfUSJ8I/bdGf4FRhMplyou2R4m/4Tx2QoJGKQV0Gky5Pfw==", "task"=>{"name"=>"my task22", "kind_id"=>"1", "description"=>"sdadasd", "delivery_at"=>"2019-10-07", "category"=>"2"}, "commit"=>"Update Task", "id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+Unpermitted parameter: :kind_id
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass):
+  
+app/controllers/tasks_controller.rb:33:in `block in update'
+app/controllers/tasks_controller.rb:32:in `update'
+Started GET "/" for 127.0.0.1 at 2019-10-06 22:05:48 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (4.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (37.7ms)
+Completed 200 OK in 129ms (Views: 117.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/tasks/1/edit" for 127.0.0.1 at 2019-10-06 22:05:50 -0400
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+  Rendering tasks/edit.html.erb within layouts/application
+  [1m[36mKind Load (0.3ms)[0m  [1m[34mSELECT "kinds".* FROM "kinds"[0m
+  ↳ app/views/tasks/_form.html.erb:21
+  Rendered tasks/_form.html.erb (54.8ms)
+  Rendered tasks/edit.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 144ms (Views: 132.1ms | ActiveRecord: 1.4ms)
+
+
+Started PATCH "/tasks/1" for 127.0.0.1 at 2019-10-06 22:05:54 -0400
+Processing by TasksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"osHHH2jkG4YHdH9VT9GyTKCWV25uSbkZE96ZWGMgdGTROasyvxorBJTbBSuy8qaJIzkEMoyvbW50HnJQJ+6W7g==", "task"=>{"name"=>"my task222", "kind_id"=>"1", "description"=>"sdadasd", "delivery_at"=>"2019-10-07", "category"=>"2"}, "commit"=>"Update Task", "id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:46
+Unpermitted parameter: :kind_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tasks_controller.rb:33
+  [1m[36mTask Update (3.1ms)[0m  [1m[33mUPDATE "tasks" SET "name" = ?, "updated_at" = ? WHERE "tasks"."id" = ?[0m  [["name", "my task222"], ["updated_at", "2019-10-07 02:05:54.477266"], ["id", 1]]
+  ↳ app/controllers/tasks_controller.rb:33
+  [1m[35m (19.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tasks_controller.rb:33
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 174ms (ActiveRecord: 23.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2019-10-06 22:05:54 -0400
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  Rendered tasks/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 144ms (Views: 139.4ms | ActiveRecord: 0.2ms)
+
+

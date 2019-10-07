@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 %w[
-  Auto
-  Manual
-  Process
+  Auto12
+  Manual12
+  Process12
   Semi-auto
 ].each do |kind_name|
   Kind.create(name: kind_name)

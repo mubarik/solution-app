@@ -6,20 +6,20 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Kind</th>
+      <th>delivery_at</th>
       <th>Category</th>
       <!-- Should we add more thinsg to the table? -->
-      <th><%= link_to "Add new task", "" %></th>
+      <th><%= link_to "Add new task", new_task_path %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= task.name %></td>
+        <td><%= task.delivery_at %></td>
+        <td><%= task.category %></td>
+        <td><%= link_to "Edit", edit_task_path(task) %></td>
       </tr>
     <% end %>
   </tbody>

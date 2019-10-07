@@ -1,0 +1,45 @@
+<%= form_for task, html: { class: "form" } do |form| %>
+  <% if task.errors.any? %>
+    <p><%= pluralize(task.errors.count, "error") %> prohibited this kind from being saved:</p>
+
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+      <span class="form-message required">This is a required field.</span>
+    </div>
+    <div class="field">
+      <%= form.label :kind %>
+      <%= collection_select(:task, :kind_id, Kind.all, :id, :name) %>
+      <span class="form-message required">This is a required field.</span>
+    </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+      <span class="form-message required">This is a required field.</span>
+    </div>
+    <div class="field">
+      <%= form.label :delivery_at %>
+      <%= form.date_field :delivery_at %>
+      <span class="form-message required">This is a required field.</span>
+    </div>
+    <div class="field">
+      <%= form.label :category %>
+      <%= form.number_field :category %>
+      <span class="form-message required">This is a required field.</span>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= link_to "Cancel", tasks_path, class: "other-action" %>
+    <%= form.submit %>
+  </div>
+<% end %>

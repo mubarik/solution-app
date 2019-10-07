@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :kind
+  belongs_to :kind, optional: true
 
   validates :name, presence: true
   

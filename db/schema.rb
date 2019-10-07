@@ -22,15 +22,14 @@ ActiveRecord::Schema.define(version: 2017_11_15_161308) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "kind_id", null: false
+    t.string "name"
+    t.integer "kind_id"
     t.datetime "delivery_at"
     t.text "description"
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["kind_id"], name: "index_tasks_on_kind_id"
-    t.index ["name"], name: "index_tasks_on_name"
   end
 
 end
